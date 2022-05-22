@@ -1,6 +1,6 @@
 # sse-realtime-app
 
-React App in use with Server Side Events (SSE).
+React App in use with Server-Sent Events (SSE).
 
 Run Node.js server from folder /server:
 
