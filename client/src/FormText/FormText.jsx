@@ -20,7 +20,7 @@ const FormText = () => {
         setFormData(data)
         console.log(formData)
       
-          fetch('http://localhost:3001/fact', {
+          fetch('http://localhost:3000/fact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)

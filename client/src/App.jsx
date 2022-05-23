@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import FormText from './FormText/FormText';
 import Table from './Table/Table';
-import { ToastContainer, toast } from 'react-toastify';
+//import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.scss';
 
@@ -22,19 +22,19 @@ function App() {
   useEffect( () => {
 
     if (!listening) {
-      const events = new EventSource('http://localhost:3001/events');
+      const events = new EventSource('http://localhost:3000/events');
 
       events.onmessage = (event) => {
           const parsedData = JSON.parse(event.data)
           setTexts((texts) => texts.concat(parsedData))
       };
-      
-        toast("New text was added!");
+
         setListening(true);
 
     }
 
     scrollToBottom()
+    //toast("New text was added!");
 
   }, [listening, texts]);
 
