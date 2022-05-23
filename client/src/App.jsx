@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import FormText from './FormText/FormText';
 import Table from './Table/Table';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.scss';
 
 function App() {
@@ -12,7 +14,7 @@ function App() {
   }  
 
   const initialArray = [
-    { info: 'Some title is here. Lorem ipsum dolor mit amet.', image: 'https://cdn.pixabay.com/photo/2018/07/20/15/25/sculpture-3550890_1280.jpg', author: 'haendzel'}
+    { id: 1, info: 'Some title is here. Lorem ipsum dolor mit amet.', image: 'https://cdn.pixabay.com/photo/2018/07/20/15/25/sculpture-3550890_1280.jpg', author: 'haendzel'}
   ]
   const [ texts, setTexts ] = useState(initialArray);
   const [ listening, setListening ] = useState(false);
@@ -20,14 +22,16 @@ function App() {
   useEffect( () => {
 
     if (!listening) {
-      const events = new EventSource('http://localhost:3000/events');
+      const events = new EventSource('http://localhost:3001/events');
 
       events.onmessage = (event) => {
-        const parsedData = JSON.parse(event.data);
-        setTexts((texts) => texts.concat(parsedData));
+          const parsedData = JSON.parse(event.data)
+          setTexts((texts) => texts.concat(parsedData))
       };
+      
+        toast("New text was added!");
+        setListening(true);
 
-      setListening(true);
     }
 
     scrollToBottom()
@@ -40,6 +44,7 @@ function App() {
     <FormText array={texts}/>
     <Table texts={texts} />
     <div ref={messagesEndRef}></div>
+    <ToastContainer />
     </>
   );
 }

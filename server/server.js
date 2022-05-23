@@ -1,16 +1,15 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
 app.get('/status', (request, response) => response.json({clients: clients.length}));
 
-const PORT = 3000;
+const PORT = 3001;
 
 let clients = [];
 let facts = [];
