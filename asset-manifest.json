@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/sse-realtime-app/static/css/main.ee9c48ed.css",
+    "main.js": "/sse-realtime-app/static/js/main.e0cdee2a.js",
+    "static/js/787.8ec1f201.chunk.js": "/sse-realtime-app/static/js/787.8ec1f201.chunk.js",
+    "static/media/font.ttf": "/sse-realtime-app/static/media/font.60f65041b7228cef8385.ttf",
+    "index.html": "/sse-realtime-app/index.html",
+    "main.ee9c48ed.css.map": "/sse-realtime-app/static/css/main.ee9c48ed.css.map",
+    "main.e0cdee2a.js.map": "/sse-realtime-app/static/js/main.e0cdee2a.js.map",
+    "787.8ec1f201.chunk.js.map": "/sse-realtime-app/static/js/787.8ec1f201.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ee9c48ed.css",
+    "static/js/main.e0cdee2a.js"
+  ]
+}
