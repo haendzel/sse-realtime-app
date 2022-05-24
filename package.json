@@ -1,0 +1,12 @@
+{  
+    "name": "sse-realtime-app",
+    "version": "1.0.0",
+    "description": "",
+    "author": "Filip Handzel",
+    "scripts": {
+    "frontend": "cd client && npm start",
+    "api": "cd server && npm server",
+    "dev": "concurrently --kill-others-on-fail \"npm run api\" \"npm run frontend\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+    }
+}

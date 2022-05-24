@@ -13,7 +13,9 @@ app.get('/status', (request, response) => response.json({clients: clients.length
 const PORT = 3000;
 
 let clients = [];
-let facts = [];
+let facts = [
+  { id: 1, info: 'Some title is here. Lorem ipsum dolor mit amet.', image: 'https://cdn.pixabay.com/photo/2018/07/20/15/25/sculpture-3550890_1280.jpg', author: 'haendzel'}
+];
 
 app.listen(PORT, () => {
   console.log(`Facts Events service listening at http://localhost:${PORT}`)
@@ -41,7 +43,7 @@ function eventsHandler(request, response, next) {
     clients.push(newClient);
   
     request.on('close', () => {
-      console.log(`${clientId} Connection closed`);
+      console.log(`Client ID: ${clientId} Connection closed`);
       clients = clients.filter(client => client.id !== clientId);
     });
   }
@@ -52,11 +54,11 @@ function eventsHandler(request, response, next) {
     clients.forEach(client => client.response.write(`data: ${JSON.stringify(newFact)}\n\n`))
   }
   
-  async function addFact(request, respsonse, next) {
-    const newFact = request.body;
-    facts.push(newFact);
-    respsonse.json(newFact)
-    return sendEventsToAll(newFact);
+  async function addText(request, respsonse, next) {
+    const newText = request.body;
+    facts.push(newText);
+    respsonse.json(newText)
+    return sendEventsToAll(newText);
   }
   
-  app.post('/fact', addFact);
+  app.post('/fact', addText);

@@ -4,6 +4,7 @@ import './Table.scss'
 const Table = (props) => {
 
     const { texts } = props;
+    texts.sort((a, b) => (a.id > b.id) ? 1 : -1);
 
     return (
 

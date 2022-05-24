@@ -4,7 +4,10 @@ import { Form } from 'react-bootstrap';
 import Button from '../Button/Button';
 import './FormText.scss';
 
-const FormText = () => {
+const FormText = (props) => {
+
+    const { array } = props;
+    const { reset } = useForm();
 
     let [formData, setFormData] = useState({});
 
@@ -15,10 +18,9 @@ const FormText = () => {
       } = useForm();
   
       const onSubmit = (data) => {
-        console.log(JSON.stringify(data));
+        data.id = array.length + 1;
         formData = data;
         setFormData(data)
-        console.log(formData)
       
           fetch('http://localhost:3000/fact', {
             method: 'POST',
@@ -26,6 +28,8 @@ const FormText = () => {
             body: JSON.stringify(formData)
            })
             .then(response => response.json())
+
+            reset();
       }; 
 
     return (
